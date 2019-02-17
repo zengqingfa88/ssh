@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts
+        PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd" >
+
+<struts>
+    <!--,json-default-->
+    <package name="default" namespace="/" extends="struts-default,json-default">
+
+        <!--    <action name="customer_*" class="com.zengqingfa.action.CustomerAction" method="{1}">
+                <result name="list">/list.jsp</result>
+            </action>-->
+        <action name="findAll" class="com.zengqingfa.action.CustomerAction" method="findAll">
+            <result name="list">/list.jsp</result>
+        </action>
+
+        <action name="test_json" method="testJson" class="com.zengqingfa.action.TestCustomerJson">
+            <result name="fail"></result>
+            <!-- 返回json类型数据 -->
+            <result type="json">
+                <!-- result是action中设置的变量名，也是页面需要返回的数据，
+                该变量必须有setter和getter方法 -->
+                <param name="root">result</param>
+            </result>
+        </action>
+
+        <action name="test_json2" class="com.zengqingfa.action.TestCustomerJson" method="testJson02"></action>
+
+
+    </package>
+</struts>
